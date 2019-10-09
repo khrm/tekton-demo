@@ -27,7 +27,9 @@ if [ "$1" = "-all" ]; then
 fi
 
 go build -o get.bin get.go
-cp final.go final-test.go
+cp ../final.go final-test.go
+cp ../edit.html edit.html
+cp ../view.html view.html
 patch final-test.go final-test.patch > /dev/null
 go build -o final-test.bin final-test.go
 ./final-test.bin &
