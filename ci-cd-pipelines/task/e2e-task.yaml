@@ -9,12 +9,19 @@ spec:
         type: git
 
   steps:
-    - name: e2e-test
-      image: golang:alpine
-      workingDir: /workspace/source-repo/e2e
+    - name: build
+      image: golang
+      workingDir: /workspace/source-repo
       command:
-        - /bin/sh
+        - make
       args:
-        - /workspace/source-repo/e2e/start-test-alpine.sh
+        - build
+    - name: e2e-test
+      image: golang
+      workingDir: /workspace/source-repo
+      command:
+        - make
+      args:
+        - e2e
       securityContext:
         privileged: true

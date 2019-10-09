@@ -9,12 +9,19 @@ spec:
         type: git
 
   steps:
-    - name: acceptance-test
-      image: golang:alpine
+    - name: build
+      image: golang
       workingDir: /workspace/source-repo
       command:
-        - /bin/sh
+        - make
       args:
-        - /workspace/source-repo/acceptance.sh
+        - build
+    - name: acceptance-test
+      image: golang
+      workingDir: /workspace/source-repo
+      command:
+        - make
+      args:
+        - acceptance
       securityContext:
         privileged: true
