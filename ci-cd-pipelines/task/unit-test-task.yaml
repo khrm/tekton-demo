@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name:  unit-test-task
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        type: git
+
+  steps:
+    - name: unit-test
+      image: golang:latest
+      workingDir: /workspace/source-repo
+      command:
+        - go
+      args:
+        - test
+        - -v
+      securityContext:
+        privileged: true

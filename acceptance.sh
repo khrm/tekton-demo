@@ -1,6 +1,4 @@
-#!/bin/bash
-
-
+#!/usr/bin/env bash
 go build -o main .
 
 ./main &
@@ -16,14 +14,16 @@ if ! [ -x "$(command -v ab)" ]; then
   apk --no-cache add apache2-utils
 fi
 
+currentRate=$(printf  %.0f `ab -k  -T 'application/x-www-form-urlencoded'    -n 1000 -c 1 'http://localhost:8080/view/doc' | grep 'Requests per second' | grep -oE [0-9]+.[0-9]+ `)
 
-if [[ $(printf  %.0f `ab -k  -T 'application/x-www-form-urlencoded'    -n 1000 -c 1 'http://localhost:8080/view/doc' | grep 'Requests per second' | grep -oE [0-9]+.[0-9]+ `) -gt acceptedRate ]] 
+if [[ $currentRate -gt $acceptedRate ]] 
 then
     kill -9 $PROC_ID
     echo PASS
 else
    kill -9 $PROC_ID
    echo Acceptance Criteria Failed
+   echo Current Rate $currentRate
    exit 1
 fi
 

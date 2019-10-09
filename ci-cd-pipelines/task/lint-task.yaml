@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name:  lint-task
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        type: git
+
+  steps:
+    - name: lint-check
+      image: golang:alpine
+      workingDir: /workspace/source-repo
+      command:
+        - sh
+      args:
+        - /workspace/source-repo/lint.sh
+      securityContext:
+        privileged: true

@@ -1,0 +1,20 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name:  acceptance-task
+spec:
+  inputs:
+    resources:
+      - name: source-repo
+        type: git
+
+  steps:
+    - name: acceptance-test
+      image: golang:alpine
+      workingDir: /workspace/source-repo
+      command:
+        - /bin/sh
+      args:
+        - /workspace/source-repo/acceptance-alpine.sh
+      securityContext:
+        privileged: true

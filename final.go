@@ -12,6 +12,7 @@ import (
 	"regexp"
 )
 
+// Page holds page data for wiki page
 type Page struct {
 	Title string
 	Body  []byte

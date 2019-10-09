@@ -1,0 +1,33 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  generateName: wiki-pipelinerun-
+spec:
+  serviceAccount: kbaig
+  pipelineRef:
+    name: cicd-pipeline
+  resources:
+    - name: source-repo
+      resourceRef:
+        name: wiki-src
+
+    - name: built-image
+      resourceRef:
+        name: wiki-image
+
+  params:
+    - name: p-pathToDockerFile
+      value: Dockerfile
+
+    - name: p-pathToContext
+      value: .
+
+    - name: p-yamlFile
+      value: "deployment-manifests/deployment.yaml"
+
+    - name: p-yamlImagePath
+      value: "spec.template.spec.containers[0].image"
+
+    - name: p-yamls
+      value: "deployment-manifests"
+
