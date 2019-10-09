@@ -17,5 +17,3 @@ spec:
       args:
         - test
         - -v
-      securityContext:
-        privileged: true

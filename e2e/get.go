@@ -25,7 +25,7 @@ var (
 func main() {
 	flag.Parse()
 	if *addr {
-		l, err := net.Listen("tcp", "127.0.0.1:0")
+		l, err := net.Listen("tcp", "127.0.0.1:8080")
 		if err != nil {
 			log.Fatal(err)
 		}

@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
-go build -o main .
+
+if [ ! -f ./main ]; then
+    go build -o main .
+fi
+
 
 ./main &
 PROC_ID=$!
