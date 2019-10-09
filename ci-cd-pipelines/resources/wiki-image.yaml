@@ -6,4 +6,4 @@ spec:
   type: image
   params:
     - name: url
-      value: docker.io/khrm/wiki
+      value: docker.io/kbaig/wiki

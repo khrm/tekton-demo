@@ -19,6 +19,7 @@ currentRate=$(printf  %.0f `ab -k  -T 'application/x-www-form-urlencoded'    -n 
 if [[ $currentRate -gt $acceptedRate ]] 
 then
     kill -9 $PROC_ID
+    echo Current Rate $currentRate
     echo PASS
 else
    kill -9 $PROC_ID

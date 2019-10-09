@@ -46,6 +46,7 @@ spec:
             resource: source-repo
 
     - name: acceptance-task
+      runAfter: ['lint-task', 'unit-test-task']
       taskRef:
         name: acceptance-task
 
@@ -55,6 +56,7 @@ spec:
             resource: source-repo
 
     - name: e2e-task
+      runAfter: ['lint-task', 'unit-test-task']
       taskRef:
         name: e2e-task
 
@@ -64,6 +66,7 @@ spec:
             resource: source-repo
 
     - name: build-task
+      runAfter: ['e2e-task', 'acceptance-task']
       taskRef:
         name: build-task
 
@@ -84,6 +87,7 @@ spec:
           value: $(params.p-pathToContext)
 
     - name: deploy-task
+      runAfter: [build-task]
       taskRef:
         name: deploy-task
 
