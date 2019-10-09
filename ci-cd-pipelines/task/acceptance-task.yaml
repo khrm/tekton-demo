@@ -15,6 +15,6 @@ spec:
       command:
         - /bin/sh
       args:
-        - /workspace/source-repo/acceptance-alpine.sh
+        - /workspace/source-repo/acceptance.sh
       securityContext:
         privileged: true

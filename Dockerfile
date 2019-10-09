@@ -16,8 +16,6 @@ COPY --from=builder /app/app .
 
 COPY edit.html edit.html
 COPY view.html view.html
-RUN chmod 777 view.html
-RUN chmod 777 edit.html
 
 EXPOSE 8080
 
