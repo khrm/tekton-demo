@@ -14,8 +14,9 @@ spec:
       labels:
         app: wiki
     spec:
+      serviceAccount: tekton
       containers:
-      - image: docker.io/piyush-garg/wiki
+      - image: docker.io/piyushgarg/wiki
         name: wiki
         ports:
         - containerPort: 8080
