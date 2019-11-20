@@ -1,9 +1,9 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineRun
 metadata:
-  generateName: wiki-pipelinerun-
+  name: wiki-pipelinerun-1
 spec:
-  serviceAccount: kbaig
+  serviceAccount: tekton
   pipelineRef:
     name: cicd-pipeline
   resources:

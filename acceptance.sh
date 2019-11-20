@@ -7,8 +7,8 @@ fi
 ./main &
 PROC_ID=$!
 
-curl 'http://localhost:8080/save/doc'
-curl 'http://localhost:8080/save/doc'  -H 'Content-Type: application/x-www-form-urlencoded'    --data 'body=hellotestbenchwashere'
+curl 'http://localhost:8080/wiki/save/doc'
+curl 'http://localhost:8080/wiki/save/doc'  -H 'Content-Type: application/x-www-form-urlencoded'    --data 'body=hellotestbenchwashere'
 
 acceptedRate=1000
 
@@ -18,7 +18,7 @@ if ! [ -x "$(command -v ab)" ]; then
     apt-get install apache2-utils
 fi
 
-currentRate=$(printf  %.0f `ab -k  -T 'application/x-www-form-urlencoded'    -n 1000 -c 1 'http://localhost:8080/view/doc' | grep 'Requests per second' | grep -oE [0-9]+.[0-9]+ `)
+currentRate=$(printf  %.0f `ab -k  -T 'application/x-www-form-urlencoded'    -n 1000 -c 1 'http://localhost:8080/wiki/view/doc' | grep 'Requests per second' | grep -oE [0-9]+.[0-9]+ `)
 
 if [ $currentRate -gt $acceptedRate ]
 then

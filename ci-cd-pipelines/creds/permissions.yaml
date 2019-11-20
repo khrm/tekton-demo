@@ -20,7 +20,7 @@ metadata:
   name: api-role-binding
 subjects:
 - kind: ServiceAccount
-  name: kbaig
+  name: tekton
 roleRef:
   kind: Role
   name: api-role

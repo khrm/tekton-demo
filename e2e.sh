@@ -15,7 +15,7 @@ fi
 wiki_pid=$!
 go build -o get.bin e2e/get.go
 
-./get.bin -post=body=some%20content http://127.0.0.1:8080/save/Test > test_save.out
+./get.bin -post=body=some%20content http://127.0.0.1:8080/wiki/save/Test > test_save.out
 diff -u test_save.out e2e/test_view.good # should be the same as viewing
 if [ $? -ne 0 ]
 then
@@ -28,7 +28,7 @@ then
     echo "failed"
     exit 1
 fi
-./get.bin http://127.0.0.1:8080/view/Test > test_view.out
+./get.bin http://127.0.0.1:8080/wiki/view/Test > test_view.out
 diff -u test_view.out e2e/test_view.good
 if [ $? -ne 0 ]
 then

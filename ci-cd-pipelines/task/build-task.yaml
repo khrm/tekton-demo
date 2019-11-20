@@ -24,7 +24,8 @@ spec:
 
   steps:
     - name: build-and-push
-      image: gcr.io/kaniko-project/executor
+      workingdir: /workspace/source
+      image: gcr.io/kaniko-project/executor:v0.13.0
       command:
         - /kaniko/executor
       args:
@@ -33,3 +34,9 @@ spec:
         - --destination=$(outputs.resources.destImage.url)
       securityContext:
         privileged: true
+      volumeMounts:
+        - name: varlibcontainers
+          mountPath: /var/lib/containers
+  volumes:
+    - name: varlibcontainers
+      emptyDir: {}
