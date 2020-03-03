@@ -8,4 +8,4 @@ spec:
     - name: revision
       value: master
     - name: url
-      value: https://github.com/piyush-garg/tekton-demo
+      value: https://github.com/khrm/tekton-demo

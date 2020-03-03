@@ -16,7 +16,7 @@ spec:
     spec:
       serviceAccount: tekton
       containers:
-      - image: docker.io/piyushgarg/wiki
+      - image: docker.io/kbaig/wiki
         name: wiki
         ports:
         - containerPort: 8080
